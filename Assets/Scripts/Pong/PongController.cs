@@ -16,7 +16,6 @@ public class PongController : BaseController
     {
         rb.gravityScale = 0f;
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-
     }
 
     private void Update()
