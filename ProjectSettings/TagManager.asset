@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pong
+  - Runner
+  - PongGoal1
+  - PongGoal2
   layers:
   - Default
   - TransparentFX
