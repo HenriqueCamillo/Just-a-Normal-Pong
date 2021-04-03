@@ -8,6 +8,8 @@ TagManager:
   - Runner
   - PongGoal1
   - PongGoal2
+  - Space Invaders
+  - Enemy
   layers:
   - Default
   - TransparentFX

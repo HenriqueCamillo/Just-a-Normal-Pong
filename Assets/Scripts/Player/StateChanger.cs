@@ -11,6 +11,13 @@ public class StateChanger : MonoBehaviour
     public delegate void OnStateChangedHandler(string state);
     public static event OnStateChangedHandler OnStateChanged;
 
+    [SerializeField] BaseController startState;
+
+    private void Start()
+    {
+        startState.Enable();
+    }
+
     public void ChangeState(BaseController currentState, BaseController nextState)
     {
         currentState.Disable();

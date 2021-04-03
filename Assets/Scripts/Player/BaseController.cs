@@ -13,7 +13,7 @@ public abstract class BaseController : MonoBehaviour
     protected void Awake()
     {
         stateChanger = GetComponent<StateChanger>();
-        Enable();
+        // Enable();
     }
 
     public abstract void Initialize();

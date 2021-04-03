@@ -1108,7 +1108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308777455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1642332, y: -10.66, z: 0.47724855}
+  m_LocalPosition: {x: 2.1642332, y: -10.91, z: 0.47724855}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 808583681}
@@ -1223,6 +1223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665893054}
+  - component: {fileID: 1665893055}
   m_Layer: 0
   m_Name: Space Invaders
   m_TagString: Untagged
@@ -1244,6 +1245,19 @@ Transform:
   m_Father: {fileID: 885691721}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665893055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665893053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bfaaff8c2efd94394f0a58b274dad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  areaTag: Space Invaders
 --- !u!1 &1688383547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765068486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.7733045, y: 4.32, z: 1.1670494}
+  m_LocalPosition: {x: 5.7733045, y: 6.25, z: 1.1670494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 696013324}
@@ -1521,6 +1535,7 @@ GameObject:
   - component: {fileID: 1932001427}
   - component: {fileID: 1932001428}
   - component: {fileID: 1932001429}
+  - component: {fileID: 1932001431}
   - component: {fileID: 1932001430}
   m_Layer: 0
   m_Name: Player
@@ -1580,7 +1595,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!212 &1932001427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1644,7 +1659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcdbf7c13a9b2af409cc7894e0a5b0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextState: {fileID: 1932001425}
+  nextState: {fileID: 1932001431}
   stateTag: Runner
   rb: {fileID: 1932001426}
   jumpForce: 7
@@ -1689,6 +1704,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStateTag: 
+  startState: {fileID: 1932001425}
+--- !u!114 &1932001431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932001423}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823914e63e018f0498a7d31f973fdf10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextState: {fileID: 0}
+  stateTag: Space Invaders
+  speed: 5
+  rb: {fileID: 1932001426}
+  projectile: {fileID: 6116082607548720758, guid: 4a5b12a9acaa52f4693a03ef85cb0138, type: 3}
 --- !u!1 &2018936083
 GameObject:
   m_ObjectHideFlags: 0
