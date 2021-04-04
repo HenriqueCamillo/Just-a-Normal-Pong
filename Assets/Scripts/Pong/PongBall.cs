@@ -10,6 +10,7 @@ public class PongBall : MonoBehaviour
     [AutoProperty, SerializeField, HideInInspector] AudioSource audioSource;
     [SerializeField] AudioClip hit, goal;
     [SerializeField] PongScore scoreBoard;
+    [SerializeField] GameObject spaceText;
     [Tag, SerializeField] string goal1Tag, goal2Tag;
     [SerializeField] float speed;
     private bool inGame;
@@ -35,6 +36,7 @@ public class PongBall : MonoBehaviour
         inGame = true;
 
         audioSource.PlayOneShot(goal);
+        spaceText.SetActive(false);
     }
 
     private void Update()
@@ -49,6 +51,7 @@ public class PongBall : MonoBehaviour
         rb.velocity = Vector2.zero;
         this.transform.position = center;
         inGame = false;
+        spaceText.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
