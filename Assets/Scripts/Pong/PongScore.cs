@@ -11,7 +11,7 @@ public class PongScore : MonoBehaviour
 
     private void Awake()
     {
-        score.SetText($"{p1} x {p2}");
+        score.SetText($"{p1}  {p2}");
     }
 
     
@@ -22,6 +22,6 @@ public class PongScore : MonoBehaviour
         else if (player == 2)
             p2++;
 
-        score.SetText($"{p1} x {p2}");
+        score.SetText($"{p1}  {p2}");
     }
 }

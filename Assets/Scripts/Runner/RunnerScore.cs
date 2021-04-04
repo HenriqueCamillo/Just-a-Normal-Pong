@@ -13,7 +13,7 @@ public class RunnerScore : MonoBehaviour
         set 
         {
             score = value;
-            scoreText.SetText(((int)score).ToString());
+            scoreText.SetText("Score: " + ((int)score).ToString());
         }
     }
     [SerializeField] float multiplier;

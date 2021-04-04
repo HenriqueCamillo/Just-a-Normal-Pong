@@ -51,4 +51,11 @@ public class RunnerController : BaseController
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
+
+
+    public override void Disable()
+    {
+        RunnerObjectGenerator.OnReset?.Invoke();
+        this.enabled = false;
+    }
 }

@@ -45,7 +45,6 @@ public class SpaceInvadersController : BaseController
 
     private void GoToVisualNovel()
     {
-        print("a");
         stateChanger.ChangeState(this, nextState);
     }
 }
