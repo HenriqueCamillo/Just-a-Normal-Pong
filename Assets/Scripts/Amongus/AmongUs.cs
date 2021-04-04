@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using TMPro;
 using UnityEngine;
 
 using RotaryHeart.Lib.SerializableDictionary;
 
 public class AmongUs : MonoBehaviour
 {
-    [SerializeField] GameObject messagePrefab, playerMessagePrefab;
+    [SerializeField] GameObject messagePrefab, playerMessagePrefab, votePrefab;
     public enum Character { Urexwife, CoolGamer, Cthulhu, DrStonks, uwu, KatanaLover, Roberto }
 
     [System.Serializable]
@@ -33,6 +33,8 @@ public class AmongUs : MonoBehaviour
     [SerializeField] Transform messagesParent;
     [SerializeField] AudioSource audio;
     [SerializeField] AudioClip messageSFX;
+    [SerializeField] TMP_InputField inputF;
+    [SerializeField] Animator anim;
 
     private string playerMessage;
     public string PlayerMessage
@@ -63,15 +65,31 @@ public class AmongUs : MonoBehaviour
     {
         foreach(var message in messages)
         {
-            Instantiate(messagePrefab, messagesParent).GetComponent<MessageUI>().Fill(message, charDict[message.character]);
+            if (message.isVote == true) {
+                Instantiate(votePrefab, messagesParent).GetComponent<MessageUI>().Fill(message, charDict[message.character]);
+            }
+            else {
+                Instantiate(messagePrefab, messagesParent).GetComponent<MessageUI>().Fill(message, charDict[message.character]);
+            }
             audio.PlayOneShot(messageSFX);
             yield return new WaitForSeconds(message.delay);
         }
+        anim.SetTrigger("Close");
     }
 
     public void SendPlayerMessage()
     {
-        Instantiate(playerMessagePrefab, messagesParent).GetComponent<MessageUI>().Fill(playerMessage);
-        audio.PlayOneShot(messageSFX);
+        if (PlayerMessage != "") {
+            Instantiate(playerMessagePrefab, messagesParent).GetComponent<MessageUI>().Fill(playerMessage);
+            audio.PlayOneShot(messageSFX);
+            PlayerMessage = "";
+            clear();
+        }
+    }
+
+    public void clear()
+    {
+        inputF.Select();
+        inputF.text = "";
     }
 }
