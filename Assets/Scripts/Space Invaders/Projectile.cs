@@ -5,6 +5,10 @@ using MyBox;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Collider2D col;
+    [SerializeField] AudioClip deathSound, killSound;
     [SerializeField] Rigidbody2D rb;
     [Tag, SerializeField] string enemyTag, derpEnemyTag, playerTag;
     [SerializeField] float speed;
@@ -19,18 +23,28 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag(derpEnemyTag) && !enemyProjectile)
         {
+            audioSource.PlayOneShot(killSound);
             EnemySpawner.OnDerpKilled?.Invoke();
-            Destroy(this.gameObject);
+            spriteRenderer.enabled = false;
+            col.enabled = false;
+            other.GetComponent<Animator>().SetTrigger("BobDeath");
+            Destroy(this.gameObject, killSound.length);
         }
         else if (other.CompareTag(enemyTag) && !enemyProjectile)
         {
+            audioSource.PlayOneShot(killSound);
+            spriteRenderer.enabled = false;
+            col.enabled = false;
             Destroy(other.gameObject);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, killSound.length);
         }
         else if (other.CompareTag(playerTag) && enemyProjectile)
         {
             EnemySpawner.OnDeath?.Invoke();
-            Destroy(this.gameObject);
+            audioSource.PlayOneShot(deathSound);
+            spriteRenderer.enabled = false;
+            col.enabled = false;
+            Destroy(this.gameObject, deathSound.length);
         }
     }
 }

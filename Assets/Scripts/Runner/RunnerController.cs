@@ -7,6 +7,8 @@ using MyBox;
 public class RunnerController : BaseController
 {
     [AutoProperty, SerializeField, HideInInspector] Rigidbody2D rb;
+    [AutoProperty, SerializeField, HideInInspector] AudioSource audioSource;
+    [SerializeField] AudioClip jumpSound;
     [PositiveValueOnly, SerializeField] float jumpForce;
 
     [Foldout("Better Jumping", true)]
@@ -19,8 +21,6 @@ public class RunnerController : BaseController
         rb.gravityScale = 1f;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (PressedJump())
@@ -50,6 +50,7 @@ public class RunnerController : BaseController
     {
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        audioSource.PlayOneShot(jumpSound);
     }
 
 

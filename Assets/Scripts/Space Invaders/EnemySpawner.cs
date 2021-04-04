@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public static Action OnDeath;
     public static Action OnReset;
     public static Action OnDerpKilled;
+    public static Action OnBobFinshedDeath;
     bool inGame;
     
     private void OnEnable()

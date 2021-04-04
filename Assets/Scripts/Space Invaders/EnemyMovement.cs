@@ -33,14 +33,14 @@ public class EnemyMovement : MonoBehaviour
     private void OnEnable()
     {
         EnemySpawner.OnDeath += Stop;
-        EnemySpawner.OnDerpKilled += Destroy;
+        EnemySpawner.OnDerpKilled += Stop;
         EnemySpawner.OnReset += Destroy;
     }
 
     private void OnDisable()
     {
         EnemySpawner.OnDeath -= Stop;
-        EnemySpawner.OnDerpKilled -= Destroy;
+        EnemySpawner.OnDerpKilled -= Stop;
         EnemySpawner.OnReset -= Destroy;
     }
 
@@ -52,5 +52,10 @@ public class EnemyMovement : MonoBehaviour
     private void Destroy()
     {
         Destroy(this.gameObject);
+    }
+
+    public void TriggerEnd()
+    {
+        EnemySpawner.OnBobFinshedDeath?.Invoke();
     }
 }
