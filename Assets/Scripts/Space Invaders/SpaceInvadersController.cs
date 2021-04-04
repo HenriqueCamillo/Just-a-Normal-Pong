@@ -16,6 +16,11 @@ public class SpaceInvadersController : BaseController
         rb.constraints = RigidbodyConstraints2D.FreezePositionY; 
     }
 
+    public override void Disable()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        this.enabled = false;
+    }
 
     void Update()
     {

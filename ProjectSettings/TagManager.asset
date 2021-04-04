@@ -11,6 +11,7 @@ TagManager:
   - Space Invaders
   - Enemy
   - Derp
+  - Visual Novel
   layers:
   - Default
   - TransparentFX
