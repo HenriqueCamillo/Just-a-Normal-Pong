@@ -27,6 +27,7 @@ public class VisualNovel : MonoBehaviour
     [SerializeField] Button dialogueButton;
     [SerializeField] AudioSource source;
     [SerializeField] AudioSource typingSource;
+    [SerializeField] GameObject amongUs;
 
     List<DialogueEntry> currentBranch;
     int currentLine = 0;
@@ -118,5 +119,11 @@ public class VisualNovel : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void AmongUs()
+    {
+        this.gameObject.SetActive(false);
+        amongUs.gameObject.SetActive(true);
     }
 }
