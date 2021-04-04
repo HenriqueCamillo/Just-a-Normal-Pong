@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +11,9 @@ using TMPro;
 
 public class VisualNovel : MonoBehaviour
 {
+    public static Action OnAmongUs;
+
+
     public enum Entity { Player, Enemy }
 
     [System.Serializable]
@@ -123,7 +127,8 @@ public class VisualNovel : MonoBehaviour
 
     public void AmongUs()
     {
-        this.gameObject.SetActive(false);
-        amongUs.gameObject.SetActive(true);
+        OnAmongUs?.Invoke();
+        // this.gameObject.SetActive(false);
+        // amongUs.gameObject.SetActive(true);
     }
 }

@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Derp
   - Visual Novel
+  - AmongUs
   layers:
   - Default
   - TransparentFX
