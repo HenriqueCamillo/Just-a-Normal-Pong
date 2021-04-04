@@ -15,7 +15,7 @@ public class EnemyShoot : MonoBehaviour
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(Random.Range(minCooldown, maxCooldown));
-        Instantiate(projectile, this.transform.position + Vector3.down, Quaternion.identity);
+        Instantiate(projectile, this.transform.position + Vector3.down, Quaternion.Euler(0f, 0f, 180f));
         Shoot();
     }
 
