@@ -22,8 +22,25 @@ public class RunnerScore : MonoBehaviour
     private void OnEnable()
     {
         inGame = true;
-        RunnerObjectGenerator.OnReset += () => { Score = 0; inGame = true; };
-        RunnerObjectGenerator.OnDeath += () => { inGame = false; };
+        RunnerObjectGenerator.OnReset += Reset; 
+        RunnerObjectGenerator.OnDeath += Death; 
+    }
+
+    private void OnDisable()
+    {
+        RunnerObjectGenerator.OnReset -= Reset; 
+        RunnerObjectGenerator.OnDeath -= Death; 
+    }
+
+    private void Reset()
+    {
+        Score = 0;
+        inGame = true;
+    }
+
+    private void Death()
+    {
+        inGame = false;
     }
 
     private void Update()

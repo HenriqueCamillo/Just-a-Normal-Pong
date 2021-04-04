@@ -5,8 +5,8 @@ using MyBox;
 
 public abstract class BaseController : MonoBehaviour
 {
-    private StateChanger stateChanger;
-    [SerializeField] BaseController nextState;
+    protected StateChanger stateChanger;
+    [SerializeField] protected BaseController nextState;
     [Tag, SerializeField] string stateTag;
 
 

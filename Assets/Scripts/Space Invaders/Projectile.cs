@@ -6,7 +6,7 @@ using MyBox;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [Tag, SerializeField] string enemyTag, playerTag;
+    [Tag, SerializeField] string enemyTag, derpEnemyTag, playerTag;
     [SerializeField] float speed;
     [SerializeField] bool enemyProjectile;
 
@@ -17,14 +17,20 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(enemyTag) && !enemyProjectile)
+        if (other.CompareTag(derpEnemyTag) && !enemyProjectile)
+        {
+            EnemySpawner.OnDerpKilled?.Invoke();
+            Destroy(this.gameObject);
+        }
+        else if (other.CompareTag(enemyTag) && !enemyProjectile)
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }
         else if (other.CompareTag(playerTag) && enemyProjectile)
         {
-            //Reset
+            EnemySpawner.OnDeath?.Invoke();
+            Destroy(this.gameObject);
         }
     }
 }

@@ -23,7 +23,7 @@ public class RunnerObjectGenerator : MonoBehaviour
     private void SpawnObstacle() 
     {
         GameObject prefab = prefabs[UnityEngine.Random.Range(0, prefabs.Length)];
-        Instantiate(prefab, this.transform.position, Quaternion.identity);
+        Instantiate(prefab, this.transform.position, Quaternion.identity, this.transform);
 
         if (spawning)
         {

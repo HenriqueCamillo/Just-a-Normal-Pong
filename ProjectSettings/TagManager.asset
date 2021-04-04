@@ -10,6 +10,7 @@ TagManager:
   - PongGoal2
   - Space Invaders
   - Enemy
+  - Derp
   layers:
   - Default
   - TransparentFX

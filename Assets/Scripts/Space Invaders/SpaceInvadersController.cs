@@ -13,13 +13,13 @@ public class SpaceInvadersController : BaseController
     public override void Initialize()
     {
         rb.gravityScale = 0f;
-        rb.constraints = 0; 
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY; 
     }
 
 
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * speed;
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0f).normalized * speed;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -30,5 +30,22 @@ public class SpaceInvadersController : BaseController
     void Shoot()
     {
         Instantiate(projectile, this.transform.position + Vector3.up, Quaternion.identity);
+    }
+    
+    private void OnEnable()
+    {
+        EnemySpawner.OnDerpKilled += GoToVisualNovel;
+    }
+
+    private void OnDisable()
+    {
+        EnemySpawner.OnDerpKilled -= GoToVisualNovel;
+        
+    }
+
+    private void GoToVisualNovel()
+    {
+        print("a");
+        stateChanger.ChangeState(this, nextState);
     }
 }
