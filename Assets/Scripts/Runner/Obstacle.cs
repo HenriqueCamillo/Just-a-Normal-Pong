@@ -6,6 +6,8 @@ using MyBox;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField, Tag] string playerTag;
+    [AutoProperty, SerializeField, HideInInspector] AudioSource audioSource;
+    [SerializeField] AudioClip deathSound;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float speed;
 
@@ -18,7 +20,10 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(playerTag))
+        {
+            audioSource.PlayOneShot(deathSound);
             RunnerObjectGenerator.OnDeath?.Invoke();
+        }
     }
 
     private void OnEnable()

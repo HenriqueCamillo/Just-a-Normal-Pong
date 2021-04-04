@@ -7,6 +7,8 @@ using MyBox;
 public class PongBall : MonoBehaviour
 {
     [AutoProperty, SerializeField, HideInInspector] Rigidbody2D rb;
+    [AutoProperty, SerializeField, HideInInspector] AudioSource audioSource;
+    [SerializeField] AudioClip hit, goal;
     [SerializeField] PongScore scoreBoard;
     [Tag, SerializeField] string goal1Tag, goal2Tag;
     [SerializeField] float speed;
@@ -31,6 +33,8 @@ public class PongBall : MonoBehaviour
 
         rb.velocity = rand * speed;
         inGame = true;
+
+        audioSource.PlayOneShot(goal);
     }
 
     private void Update()
@@ -41,6 +45,7 @@ public class PongBall : MonoBehaviour
 
     private void Reset()
     {
+        audioSource.PlayOneShot(goal);
         rb.velocity = Vector2.zero;
         this.transform.position = center;
         inGame = false;
@@ -58,5 +63,10 @@ public class PongBall : MonoBehaviour
             scoreBoard.SetGoal(2);
             Reset();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        audioSource.PlayOneShot(hit);
     }
 }

@@ -6,19 +6,31 @@ using MyBox;
 [RequireComponent(typeof(Rigidbody2D))]
 public class SpaceInvadersController : BaseController
 {
+    [AutoProperty, SerializeField] Animator anim;
     [PositiveValueOnly, SerializeField] float speed;
+    [SerializeField] Transform bulletPos;
+    [AutoProperty, SerializeField, HideInInspector] AudioSource audioSource;
+    [SerializeField] AudioClip shootClip;
     [AutoProperty, SerializeField, HideInInspector] Rigidbody2D rb;
     [SerializeField] GameObject projectile;
+    bool inCooldown = true;
 
     public override void Initialize()
     {
         rb.gravityScale = 0f;
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY; 
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation; 
+        Invoke(nameof(Transition), 0f);
+    }
+
+    void Transition()
+    {
+        anim.SetTrigger("Transition");
+
     }
 
     public override void Disable()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        anim.SetTrigger("Vanish");
         this.enabled = false;
     }
 
@@ -26,7 +38,7 @@ public class SpaceInvadersController : BaseController
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0f).normalized * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!inCooldown && Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
@@ -34,17 +46,31 @@ public class SpaceInvadersController : BaseController
 
     void Shoot()
     {
-        Instantiate(projectile, this.transform.position + Vector3.up, Quaternion.identity);
+        inCooldown = true;
+        anim.SetTrigger("Shoot");
     }
-    
+
+    public void ActuallyNowYouCanShoot()
+    {
+        Instantiate(projectile, bulletPos.position, Quaternion.identity);
+        audioSource.PlayOneShot(shootClip);
+        inCooldown = false;
+        
+    }
+
+    public void ResetCooldown()
+    {
+        inCooldown = false;
+    }
+
     private void OnEnable()
     {
-        EnemySpawner.OnDerpKilled += GoToVisualNovel;
+        EnemySpawner.OnBobFinshedDeath += GoToVisualNovel;
     }
 
     private void OnDisable()
     {
-        EnemySpawner.OnDerpKilled -= GoToVisualNovel;
+        EnemySpawner.OnBobFinshedDeath -= GoToVisualNovel;
         
     }
 
