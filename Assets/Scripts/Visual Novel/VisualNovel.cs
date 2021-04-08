@@ -127,6 +127,7 @@ public class VisualNovel : MonoBehaviour
 
     public void AmongUs()
     {
+        print("amogus");
         OnAmongUs?.Invoke();
         // this.gameObject.SetActive(false);
         // amongUs.gameObject.SetActive(true);
