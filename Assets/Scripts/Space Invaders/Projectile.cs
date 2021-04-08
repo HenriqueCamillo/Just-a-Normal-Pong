@@ -19,6 +19,21 @@ public class Projectile : MonoBehaviour
         rb.velocity = Vector2.up * (enemyProjectile ? -speed : speed) ;
     }
 
+    private void OnEnable()
+    {
+        EnemySpawner.OnPacifist += Destroy;
+    }
+
+    private void OnDisable()
+    {
+        EnemySpawner.OnPacifist -= Destroy;
+    }
+
+    private void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(derpEnemyTag) && !enemyProjectile)
@@ -32,6 +47,7 @@ public class Projectile : MonoBehaviour
         }
         else if (other.CompareTag(enemyTag) && !enemyProjectile)
         {
+            EnemySpawner.OnEnemyDeath?.Invoke();
             audioSource.PlayOneShot(killSound);
             spriteRenderer.enabled = false;
             col.enabled = false;

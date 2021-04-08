@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class SpaceInvadersController : BaseController
@@ -14,6 +15,12 @@ public class SpaceInvadersController : BaseController
     [AutoProperty, SerializeField, HideInInspector] Rigidbody2D rb;
     [SerializeField] GameObject projectile;
     bool inCooldown = true;
+    bool shootEnabled = true;
+
+    private void DisableShoot()
+    {
+        shootEnabled = false;
+    }
 
     public override void Initialize()
     {
@@ -38,7 +45,7 @@ public class SpaceInvadersController : BaseController
     {
         rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0f).normalized * speed;
 
-        if (!inCooldown && Input.GetKeyDown(KeyCode.Space))
+        if (!inCooldown && shootEnabled && Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
@@ -66,11 +73,13 @@ public class SpaceInvadersController : BaseController
     private void OnEnable()
     {
         EnemySpawner.OnBobFinshedDeath += GoToVisualNovel;
+        EnemySpawner.OnPacifist += DisableShoot;
     }
 
     private void OnDisable()
     {
         EnemySpawner.OnBobFinshedDeath -= GoToVisualNovel;
+        EnemySpawner.OnPacifist -= DisableShoot;
         
     }
 

@@ -33,6 +33,7 @@ public class EnemyMovement : MonoBehaviour
     private void OnEnable()
     {
         EnemySpawner.OnDeath += Stop;
+        EnemySpawner.OnPacifist += Stop;
         EnemySpawner.OnDerpKilled += Stop;
         EnemySpawner.OnReset += Destroy;
     }
@@ -41,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
     {
         EnemySpawner.OnDeath -= Stop;
         EnemySpawner.OnDerpKilled -= Stop;
+        EnemySpawner.OnPacifist -= Stop;
         EnemySpawner.OnReset -= Destroy;
     }
 
