@@ -38,6 +38,7 @@ public class SpaceInvadersController : BaseController
     public override void Disable()
     {
         anim.SetTrigger("Vanish");
+        Time.timeScale = 1f;
         this.enabled = false;
     }
 
