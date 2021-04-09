@@ -40,6 +40,7 @@ public class AmongUs : MonoBehaviour
 
     [SerializeField] AudioClip pongSound;
     [SerializeField] CinemachineVirtualCamera cam;
+    [SerializeField] GameObject bg;
 
     private string playerMessage;
     public string PlayerMessage
@@ -96,6 +97,7 @@ public class AmongUs : MonoBehaviour
     public void SetupTransition()
     {
         Pong();
+        bg.SetActive(false);
         cam.m_Lens.OrthographicSize = 0.1f;
         StateChanger.instance.ChangeState();
     }
