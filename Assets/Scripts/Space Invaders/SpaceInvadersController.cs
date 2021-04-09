@@ -74,13 +74,19 @@ public class SpaceInvadersController : BaseController
     {
         EnemySpawner.OnBobFinshedDeath += GoToVisualNovel;
         EnemySpawner.OnPacifist += DisableShoot;
+        EnemySpawner.OnPacifist += Pacifist;
     }
 
     private void OnDisable()
     {
         EnemySpawner.OnBobFinshedDeath -= GoToVisualNovel;
         EnemySpawner.OnPacifist -= DisableShoot;
-        
+        EnemySpawner.OnPacifist -= Pacifist;
+    }
+
+    private void Pacifist()
+    {
+        Invoke(nameof(GoToVisualNovel), 2f);
     }
 
     private void GoToVisualNovel()

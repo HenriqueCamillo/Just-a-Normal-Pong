@@ -10,7 +10,7 @@ public abstract class BaseController : MonoBehaviour
     [Tag, SerializeField] string stateTag;
 
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         stateChanger = GetComponent<StateChanger>();
         // Enable();

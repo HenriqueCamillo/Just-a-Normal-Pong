@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] Vector2Int shape;
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] GameObject derpEnemyPrefab;
+    [SerializeField] GameObject derpEnemyPrefab, derpReference;
     [SerializeField] float spacement;
 
     public static Action OnDeath;
@@ -46,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
         OnDeath += Death;
         OnEnemyDeath += Count;
         OnReset += ResetCounter;
+        OnPacifist += Pacifist;
     }
 
     private void OnDisable()
@@ -53,6 +54,12 @@ public class EnemySpawner : MonoBehaviour
         OnDeath -= Death;
         OnEnemyDeath -= Count;
         OnReset -= ResetCounter;
+        OnPacifist -= Pacifist;
+    }
+
+    private void Pacifist()
+    {
+        derpReference.GetComponent<Animator>().SetTrigger("Pacifist");
     }
 
     private void Death()
@@ -75,7 +82,9 @@ public class EnemySpawner : MonoBehaviour
                 pos = (Vector2)this.transform.position + Vector2.right * j * spacement + Vector2.down * i * spacement;   
                 
                 prefab = (derpPosition.x == i && derpPosition.y == j) ? derpEnemyPrefab : enemyPrefab;
-                Instantiate(prefab, pos, Quaternion.identity, this.transform);
+                GameObject enemy = Instantiate(prefab, pos, Quaternion.identity, this.transform);
+                if(derpPosition.x == i && derpPosition.y == j)
+                    derpReference = enemy;
             }
         }
     }

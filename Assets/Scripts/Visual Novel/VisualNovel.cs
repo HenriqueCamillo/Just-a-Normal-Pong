@@ -26,17 +26,18 @@ public class VisualNovel : MonoBehaviour
     }
 
     [SerializeField] List<DialogueEntry> mainDialogueLines;
-    [SerializeField] List<DialogueEntry> firstOptionLines, secondOptionLines, thirdOptionLines, fourthOptionLines;
+    [SerializeField] List<DialogueEntry> firstOptionLines, secondOptionLines, thirdOptionLines, fourthOptionLines, pacifistLines;
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] int framesPerCharacter;
     [SerializeField] Button dialogueButton;
-    [SerializeField] AudioSource source;
+    [SerializeField] AudioSource source, music;
     [SerializeField] AudioSource typingSource;
-    [SerializeField] GameObject amongUs;
+    [SerializeField] GameObject amongUs, pacifist, enemy;
 
     List<DialogueEntry> currentBranch;
     int currentLine = 0;
     bool filling = false;
+    public static bool Pacifist = false;
 
     private void Awake()
     {
@@ -47,7 +48,15 @@ public class VisualNovel : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         this.gameObject.SetActive(true);
-        currentBranch = mainDialogueLines;
+        currentBranch = Pacifist ? pacifistLines : mainDialogueLines;
+
+        if(Pacifist)
+        {
+            music.gameObject.SetActive(false);
+            enemy.SetActive(false);
+            pacifist.SetActive(true);
+        }
+
         dialogueButton.Select();
         StartCoroutine(FillText());
     }

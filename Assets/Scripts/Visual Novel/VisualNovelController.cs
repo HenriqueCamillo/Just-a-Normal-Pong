@@ -6,14 +6,22 @@ public class VisualNovelController : BaseController
 {
     public override void Initialize() { }
 
-    private void OnEnable()
+    protected override void Awake()
     {
+        base.Awake();
         VisualNovel.OnAmongUs += Amogus;
+        EnemySpawner.OnPacifist += Pacifist;
     }
 
     private void OnDestroy()
     {
         VisualNovel.OnAmongUs -= Amogus;
+        EnemySpawner.OnPacifist -= Pacifist;
+    }
+
+    void Pacifist()
+    {
+        VisualNovel.Pacifist = true;
     }
 
     void Amogus()

@@ -1340,6 +1340,7 @@ MonoBehaviour:
   shape: {x: 4, y: 12}
   enemyPrefab: {fileID: 6628666068635410536, guid: 0f125610e6089a641b0d11ba51e135cf, type: 3}
   derpEnemyPrefab: {fileID: 6628666068635410536, guid: 7333c26cd71323a428527e75bc1afc11, type: 3}
+  derpReference: {fileID: 0}
   spacement: 1.3
 --- !u!1 &401306398
 GameObject:
@@ -2050,9 +2051,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148234141}
     m_Modifications:
-    - target: {fileID: 242757480938909395, guid: e3faabc36d50c82489f3be7d2c15ce6f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
+    - target: {fileID: 304937084, guid: e3faabc36d50c82489f3be7d2c15ce6f, type: 3}
+      propertyPath: m_text
+      value: Friendship
+      objectReference: {fileID: 0}
+    - target: {fileID: 242757482690859260, guid: e3faabc36d50c82489f3be7d2c15ce6f, type: 3}
+      propertyPath: pacifistLines.Array.data[1].text
+      value: You became a close friend of his and his family and lived happily ever
+        after.
       objectReference: {fileID: 0}
     - target: {fileID: 242757482690859262, guid: e3faabc36d50c82489f3be7d2c15ce6f, type: 3}
       propertyPath: m_Name
