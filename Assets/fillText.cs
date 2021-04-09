@@ -8,7 +8,8 @@ public class fillText : MonoBehaviour {
     public TextMeshProUGUI dialogueText;
     public int framesPerCharacter;
 
-    public void Start() {
+    public void OnEnable() {
+        dialogueText.SetText("");
         StartCoroutine(FillText());
     }
 

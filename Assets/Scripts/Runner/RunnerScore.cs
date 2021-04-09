@@ -30,6 +30,7 @@ public class RunnerScore : MonoBehaviour
     {
         RunnerObjectGenerator.OnReset -= Reset; 
         RunnerObjectGenerator.OnDeath -= Death; 
+        Score = 0f;
     }
 
     private void Reset()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Cinemachine;
 
 using RotaryHeart.Lib.SerializableDictionary;
 
@@ -32,9 +33,13 @@ public class AmongUs : MonoBehaviour
     [SerializeField] List<Message> messages;
     [SerializeField] Transform messagesParent;
     [SerializeField] AudioSource audio;
+    [SerializeField] AudioSource audio2;
     [SerializeField] AudioClip messageSFX;
     [SerializeField] TMP_InputField inputF;
     [SerializeField] Animator anim;
+
+    [SerializeField] AudioClip pongSound;
+    [SerializeField] CinemachineVirtualCamera cam;
 
     private string playerMessage;
     public string PlayerMessage
@@ -44,11 +49,6 @@ public class AmongUs : MonoBehaviour
         {
             playerMessage = value;
         }
-    }
-
-    private void Awake()
-    {
-        StartAmongUs();
     }
 
     public void StartAmongUs()
@@ -91,5 +91,22 @@ public class AmongUs : MonoBehaviour
     {
         inputF.Select();
         inputF.text = "";
+    }
+
+    public void SetupTransition()
+    {
+        Pong();
+        cam.m_Lens.OrthographicSize = 0.1f;
+        StateChanger.instance.ChangeState();
+    }
+
+    public void Pong()
+    {
+        audio2.PlayOneShot(pongSound);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+            Pong();
     }
 }

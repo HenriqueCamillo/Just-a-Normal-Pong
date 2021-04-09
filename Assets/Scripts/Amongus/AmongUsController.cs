@@ -1,5 +1,7 @@
+using UnityEngine;
 public class AmongUsController : BaseController
 {
-    public override void Initialize() { }
+    [SerializeField] AmongUs mogus;
+    public override void Initialize() { mogus.StartAmongUs(); }
 
 }

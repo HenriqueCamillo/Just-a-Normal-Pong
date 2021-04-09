@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class VisualNovelController : BaseController
 {
-    public override void Initialize() { }
+    [SerializeField] VisualNovel vn;
+    public override void Initialize() 
+    { 
+        vn.StartDialogue();
+    }
 
     protected override void Awake()
     {

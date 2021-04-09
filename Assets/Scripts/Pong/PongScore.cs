@@ -24,4 +24,10 @@ public class PongScore : MonoBehaviour
 
         score.SetText($"{p1}  {p2}");
     }
+    private void OnDisable()
+    {
+        p1 = 0;
+        p2 = 0;
+        score.SetText($"{p1}  {p2}");
+    }
 }

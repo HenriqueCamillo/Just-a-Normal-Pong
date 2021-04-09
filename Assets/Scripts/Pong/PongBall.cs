@@ -26,16 +26,24 @@ public class PongBall : MonoBehaviour
             scoreBoard = FindObjectOfType<PongScore>();
     }
 
-    public void Throw()
+    public void Throw(bool replay = false)
     {
+        print("hro");
+        this.transform.position = center;
         Vector2 rand = Random.insideUnitCircle.normalized;
         while (rand.x < 0.5f) 
             rand = Random.insideUnitCircle.normalized;
 
+        if (!replay)
+            audioSource.PlayOneShot(goal);
+        else
+            rand = new Vector2(-1f, 1f).normalized;
+
+
         rb.velocity = rand * speed;
         inGame = true;
 
-        audioSource.PlayOneShot(goal);
+            
         spaceText.SetActive(false);
     }
 

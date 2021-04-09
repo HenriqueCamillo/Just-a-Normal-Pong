@@ -44,6 +44,8 @@ public class EnemyMovement : MonoBehaviour
         EnemySpawner.OnDerpKilled -= Stop;
         EnemySpawner.OnPacifist -= Stop;
         EnemySpawner.OnReset -= Destroy;
+
+        Destroy(this.gameObject);
     }
 
     private void Stop()

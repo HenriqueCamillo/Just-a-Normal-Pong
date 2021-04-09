@@ -42,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetCounter();
         Spawn();
         OnDeath += Death;
         OnEnemyDeath += Count;

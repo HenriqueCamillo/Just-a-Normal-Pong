@@ -6,7 +6,6 @@ public class Killzone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print(other.name);
         if (!other.CompareTag("Player"))
             Destroy(other.gameObject);
     }

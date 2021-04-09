@@ -39,13 +39,9 @@ public class VisualNovel : MonoBehaviour
     bool filling = false;
     public static bool Pacifist = false;
 
-    private void Awake()
-    {
-        StartDialogue();
-    }
-
     public void StartDialogue()
     {
+        currentLine = 0;
         source = GetComponent<AudioSource>();
         this.gameObject.SetActive(true);
         currentBranch = Pacifist ? pacifistLines : mainDialogueLines;
@@ -100,7 +96,10 @@ public class VisualNovel : MonoBehaviour
         }
         filling = false;
     }
-
+    private void OnDisable()
+    {
+        Pacifist = false;       
+    }
     public void ChooseOption(int index)
     {
         currentLine = 0;
@@ -150,7 +149,7 @@ public class VisualNovel : MonoBehaviour
 
     public void AmongUs()
     {
-        print("amogus");
+        StateChanger.instance.ChangeState();
         OnAmongUs?.Invoke();
     }
 }
