@@ -2415,6 +2415,7 @@ GameObject:
   - component: {fileID: 242757482370576131}
   - component: {fileID: 242757482370576130}
   - component: {fileID: 242757482370576129}
+  - component: {fileID: 589618083}
   m_Layer: 0
   m_Name: Mask
   m_TagString: Untagged
@@ -2512,6 +2513,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &589618083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242757482370576252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4efbf6c3f874748bbcc4a3e6a4874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vn: {fileID: 242757482690859260}
 --- !u!1 &242757482383947004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,6 +2933,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814d837430cef1546be5d7dafddab0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnGameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 242757481121039061}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 242757481970686298}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 242757480862481889}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   mainDialogueLines:
   - text: Argh!!! Uh... Ow! W-What!?
     voiceline: {fileID: 8300000, guid: 6e2684bd4edd36341b699025d7a13a4c, type: 3}
@@ -3044,43 +3097,7 @@ MonoBehaviour:
     voiceline: {fileID: 8300000, guid: d70c0bbe1171ea34a842b5586df0d5b0, type: 3}
     OnNext:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 242757481121039061}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 242757481970686298}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 242757480862481889}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: Select
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   secondOptionLines:
   - text: W-What?! T-There are several witnesses!! I didn't shoot you!
     voiceline: {fileID: 8300000, guid: 6e2684bd4edd36341b699025d7a13a4c, type: 3}
@@ -3108,43 +3125,7 @@ MonoBehaviour:
     voiceline: {fileID: 8300000, guid: d70c0bbe1171ea34a842b5586df0d5b0, type: 3}
     OnNext:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 242757481121039061}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 242757481970686298}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 242757480862481889}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: Select
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   thirdOptionLines:
   - text: You're sorry?! I'm dying! Why would I forgive you?!
     voiceline: {fileID: 8300000, guid: 4c9dbe91cf0807f4faa4b70340886a79, type: 3}
@@ -3172,43 +3153,7 @@ MonoBehaviour:
     voiceline: {fileID: 8300000, guid: d70c0bbe1171ea34a842b5586df0d5b0, type: 3}
     OnNext:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 242757481121039061}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 242757481970686298}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 242757480862481889}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: Select
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+        m_Calls: []
   fourthOptionLines:
   - text: What?! How can you prove that?! I-I wasn't!
     voiceline: {fileID: 8300000, guid: 4c9dbe91cf0807f4faa4b70340886a79, type: 3}
@@ -3246,19 +3191,7 @@ MonoBehaviour:
     voiceline: {fileID: 8300000, guid: d70c0bbe1171ea34a842b5586df0d5b0, type: 3}
     OnNext:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 242757482690859260}
-          m_TargetAssemblyTypeName: VisualNovel, Assembly-CSharp
-          m_MethodName: AmongUs
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   dialogueText: {fileID: 242757481006971580}
   framesPerCharacter: 5
   dialogueButton: {fileID: 1472027124}

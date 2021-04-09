@@ -12,6 +12,7 @@ using TMPro;
 public class VisualNovel : MonoBehaviour
 {
     public static Action OnAmongUs;
+    public UnityEvent OnGameOver;
 
 
     public enum Entity { Player, Enemy }
@@ -115,6 +116,14 @@ public class VisualNovel : MonoBehaviour
         StartCoroutine(FillText());
     }
 
+    public void Die()
+    {
+        if(currentBranch == fourthOptionLines)
+            AmongUs();
+        else
+            OnGameOver?.Invoke();
+    }
+
     public void Retry()
     {
         SceneManager.LoadScene(0);
@@ -125,10 +134,13 @@ public class VisualNovel : MonoBehaviour
         Application.Quit();
     }
 
+    public void GameOver()
+    {
+
+    }
+
     public void AmongUs()
     {
         OnAmongUs?.Invoke();
-        // this.gameObject.SetActive(false);
-        // amongUs.gameObject.SetActive(true);
     }
 }

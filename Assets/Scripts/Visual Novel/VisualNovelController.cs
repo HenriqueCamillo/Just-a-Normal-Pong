@@ -11,7 +11,7 @@ public class VisualNovelController : BaseController
         VisualNovel.OnAmongUs += Amogus;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         VisualNovel.OnAmongUs -= Amogus;
     }
