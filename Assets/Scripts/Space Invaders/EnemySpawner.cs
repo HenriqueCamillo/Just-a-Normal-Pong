@@ -14,17 +14,45 @@ public class EnemySpawner : MonoBehaviour
     public static Action OnReset;
     public static Action OnDerpKilled;
     public static Action OnBobFinshedDeath;
+    public static Action OnEnemyDeath;
+    public static Action OnPacifist;
     bool inGame;
+
+    int nEnemies, deathCounter;
+
+    private void Start()
+    {
+        nEnemies = shape.x * shape.y - 1;
+    }
     
+    private void Count()
+    {
+        deathCounter++;
+        if (deathCounter == nEnemies)
+        {
+            OnPacifist?.Invoke();
+            print("Pacifist");
+        }
+    }
+
+    private void ResetCounter()
+    {
+        deathCounter = 0;
+    }
+
     private void OnEnable()
     {
         Spawn();
         OnDeath += Death;
+        OnEnemyDeath += Count;
+        OnReset += ResetCounter;
     }
 
     private void OnDisable()
     {
         OnDeath -= Death;
+        OnEnemyDeath -= Count;
+        OnReset -= ResetCounter;
     }
 
     private void Death()

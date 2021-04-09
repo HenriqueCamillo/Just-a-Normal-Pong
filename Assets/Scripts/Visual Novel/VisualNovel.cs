@@ -141,6 +141,7 @@ public class VisualNovel : MonoBehaviour
 
     public void AmongUs()
     {
+        print("amogus");
         OnAmongUs?.Invoke();
     }
 }

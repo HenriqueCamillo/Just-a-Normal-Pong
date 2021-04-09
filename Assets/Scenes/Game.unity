@@ -2050,6 +2050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148234141}
     m_Modifications:
+    - target: {fileID: 242757480938909395, guid: e3faabc36d50c82489f3be7d2c15ce6f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 242757482690859262, guid: e3faabc36d50c82489f3be7d2c15ce6f, type: 3}
       propertyPath: m_Name
       value: Visual Novel
@@ -4433,7 +4437,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 2c696b952e055a3448d75ea37dfa1dfc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &2021725145
 BoxCollider2D:
